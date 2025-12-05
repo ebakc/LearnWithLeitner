@@ -2,7 +2,6 @@
 
 Leitner sistemi tabanlı akıllı öğrenme uygulaması. Spaced repetition ile daha etkili öğrenme!
 
-**🟢 Prototip v1.0 Hazır - Kullanıma Tamamen Hazır**
 
 ## 🎯 Nedir?
 
@@ -18,7 +17,7 @@ Leitner sistemi, kartlardaki bilgileri doğru zamanda tekrar etmeyi sağlayan bi
 
 ### Kurulum (Kurulum Gerekmez!)
 
-`index.html` dosyasını tarayıcınızda açın. Başbakan! 🎉
+`index.html` dosyasını tarayıcınızda açın.
 
 Tamamen browser-based, LocalStorage kullanıyor:
 
@@ -88,7 +87,7 @@ Bu, test için hazır örnek deste ve kartlar ekler.
 - **Kartlar Listesi**: Destede bulunan tüm kartlar
 - **Yeni Kart Ekle**: Soru, cevap, kategori ile yeni kart oluştur
 - **Kartları Sil**: İstemediğin kartları kaldır
-- **Destoyu Sil**: Tüm kartlarla birlikte destoyu kaldır
+- **Desteyi Sil**: Tüm kartlarla birlikte destoyu kaldır
 - **Geri Dön**: Ana sayfaya dön
 
 ### Çalışma Ekranı (`workpage.html`)
@@ -226,16 +225,6 @@ memory-bank/           → Proje dokumentasyonu
 - Offline-only (Cloud sync olmadığı için)
 - Farklı browser'lar arasında veri senkronizasyonu yok
 
-## 🚀 Gelecek Özellikler (Phase 3)
-
-- [ ] Arama ve filtreleme
-- [ ] Kategori-wise filtreleme
-- [ ] Advanced statistics (grafik, trend analizi)
-- [ ] Bulk operations
-- [ ] Sound effects
-- [ ] Cloud sync (backend required)
-- [ ] Mobile app version
-
 ## 💡 İpuçları
 
 1. **Etkili Öğrenme**: Günlük olarak çalış. Sistem otomatik olarak doğru zamanında tekrar gösterir
@@ -243,12 +232,6 @@ memory-bank/           → Proje dokumentasyonu
 3. **Düzenli Yedekle**: Ayda bir önemli verilerinizi indirerek yedekleyin
 4. **Tema Seç**: Gözlerinize rahat gelen temayı seçin
 5. **Test Verileriyle Başla**: İlk olarak test verileriyle uygulamayı keşfedin
-
-## 📞 Destek
-
-Proje açık kaynaklıdır. GitHub'da sorunları raporlayabilir veya katkıda bulunabilirsin:
-
-[GitHub Repository](https://github.com/ebakc/LearnWithLeitner)
 
 ## 📝 Lisans
 
@@ -328,29 +311,6 @@ Storage.importData(jsonString);
 - **Font**: Inter (Google Fonts)
 - **Storage**: Browser LocalStorage
 - **Data Format**: JSON
-
-## ✨ Özellikler
-
-### Tamamlanan ✅
-
-- [x] Deste oluşturma/silme
-- [x] Kart yönetimi (ekle/sil)
-- [x] 5-kutu Leitner sistemi
-- [x] Kart flip animasyonu
-- [x] JSON export/import
-- [x] Responsive tasarım
-- [x] Kategori desteği
-- [x] Çalışma istatistikleri (kutu başına kart sayısı)
-
-### Sonra Eklenebilecek 🔜
-
-- [ ] İstatistikler dashboard (grafikler)
-- [ ] Tema toggle (light/dark)
-- [ ] Arama ve filtreleme
-- [ ] Sound effects
-- [ ] Kategori-wise çalışma
-- [ ] Bulk operations
-- [ ] Cloud sync (Firebase vb.)
 
 ## 🐛 Troubleshooting
 
