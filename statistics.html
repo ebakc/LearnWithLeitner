@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html class="dark" lang="tr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>İstatistikler - Learn with Leitner</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#38bdf8",
+            "background-dark": "#111827",
+            "card-dark": "#1f2937",
+            "border-dark": "#374151",
+            "background-light": "#f6f7f8",
+            "card-light": "#ffffff",
+            "border-light": "#e5e7eb"
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    
+    html:not(.dark) {
+      background-color: #f6f7f8 !important;
+      color: #1f2937 !important;
+    }
+    
+    html:not(.dark) body {
+      background-color: #f6f7f8 !important;
+      color: #1f2937 !important;
+    }
+    
+    html:not(.dark) main {
+      background-color: #f6f7f8 !important;
+    }
+    
+    html:not(.dark) h1,
+    html:not(.dark) h2,
+    html:not(.dark) h3,
+    html:not(.dark) p,
+    html:not(.dark) span,
+    html:not(.dark) div {
+      color: #1f2937 !important;
+    }
+    
+    html:not(.dark) .text-slate-50,
+    html:not(.dark) .text-slate-100 {
+      color: #1f2937 !important;
+    }
+    
+    html:not(.dark) .text-slate-400 {
+      color: #6b7280 !important;
+    }
+    
+    html:not(.dark) .text-slate-500 {
+      color: #6b7280 !important;
+    }
+    
+    html:not(.dark) .text-green-400 {
+      color: #059669 !important;
+    }
+    
+    html:not(.dark) .text-yellow-400 {
+      color: #d97706 !important;
+    }
+    
+    html:not(.dark) header {
+      background-color: rgba(255, 255, 255, 0.95) !important;
+      border-color: #e5e7eb !important;
+    }
+    
+    html:not(.dark) .bg-card-dark {
+      background-color: #ffffff;
+    }
+    
+    html:not(.dark) .border-border-dark {
+      border-color: #e5e7eb;
+    }
+    
+    html:not(.dark) .text-slate-100 {
+      color: #1f2937;
+    }
+    
+    html:not(.dark) .text-slate-300,
+    html:not(.dark) .text-slate-400 {
+      color: #6b7280;
+    }
+    
+    html:not(.dark) .bg-slate-700 {
+      background-color: #e5e7eb;
+      color: #1f2937;
+    }
+    
+    html:not(.dark) .bg-slate-700:hover {
+      background-color: #d1d5db;
+    }
+    
+    html:not(.dark) .bg-green-400 {
+      color: #059669;
+    }
+    
+    html:not(.dark) .bg-yellow-400 {
+      color: #d97706;
+    }
+    
+    html:not(.dark) .bg-primary\/30 {
+      background-color: rgba(56, 189, 248, 0.2);
+    }
+    
+    html:not(.dark) .bg-slate-700\/30 {
+      background-color: rgba(229, 231, 235, 0.5);
+    }
+    
+    html:not(.dark) .text-green-400 {
+      color: #059669;
+    }
+    
+    html:not(.dark) .text-slate-50 {
+      color: #1f2937;
+    }
+    
+    html:not(.dark) .text-yellow-400 {
+      color: #d97706;
+    }
+    
+    html:not(.dark) a {
+      color: #38bdf8;
+    }
+</style>
+  </style>
+</head>
+<body class="font-display bg-background-dark text-slate-100">
+<header class="sticky top-0 z-20 flex items-center justify-between border-b border-border-dark bg-background-dark/80 backdrop-blur-sm px-6 lg:px-10 py-3">
+<div class="flex items-center gap-4">
+<a href="index.html" class="text-primary hover:text-primary/80 transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</a>
+<h2 class="text-lg font-bold text-slate-50">İstatistikler</h2>
+</div>
+</header>
+
+<main class="p-6 lg:p-10">
+<div class="max-w-6xl mx-auto">
+
+<!-- Genel İstatistikler -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+<div class="bg-card-dark rounded-xl border border-border-dark p-6">
+<p class="text-slate-400 text-sm font-medium mb-2">Toplam Kartlar</p>
+<p class="text-3xl font-bold text-slate-100" id="total-cards">0</p>
+</div>
+<div class="bg-card-dark rounded-xl border border-border-dark p-6">
+<p class="text-slate-400 text-sm font-medium mb-2">Master Seviyesi</p>
+<p class="text-3xl font-bold text-green-400" id="box-5-cards">0</p>
+</div>
+<div class="bg-card-dark rounded-xl border border-border-dark p-6">
+<p class="text-slate-400 text-sm font-medium mb-2">Başarı Oranı</p>
+<p class="text-3xl font-bold text-primary" id="success-rate">0%</p>
+</div>
+<div class="bg-card-dark rounded-xl border border-border-dark p-6">
+<p class="text-slate-400 text-sm font-medium mb-2">Çalışılan Kartlar (Bugün)</p>
+<p class="text-3xl font-bold text-yellow-400" id="today-studied">0</p>
+</div>
+</div>
+
+<!-- Kutu Dağılımı -->
+<div class="bg-card-dark rounded-xl border border-border-dark p-6 mb-8">
+<h3 class="text-xl font-bold text-slate-100 mb-6">Kutu Dağılımı</h3>
+<div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+<div class="flex flex-col items-center p-4 bg-slate-700/30 rounded-lg">
+<span class="text-sm text-slate-400 mb-2">📦 Kutu 1</span>
+<p class="text-2xl font-bold text-slate-100" id="box-1-count">0</p>
+<p class="text-xs text-slate-500 mt-1">1 günde tekrar</p>
+</div>
+<div class="flex flex-col items-center p-4 bg-slate-700/30 rounded-lg">
+<span class="text-sm text-slate-400 mb-2">📦 Kutu 2</span>
+<p class="text-2xl font-bold text-slate-100" id="box-2-count">0</p>
+<p class="text-xs text-slate-500 mt-1">2 günde tekrar</p>
+</div>
+<div class="flex flex-col items-center p-4 bg-slate-700/30 rounded-lg">
+<span class="text-sm text-slate-400 mb-2">📦 Kutu 3</span>
+<p class="text-2xl font-bold text-slate-100" id="box-3-count">0</p>
+<p class="text-xs text-slate-500 mt-1">4 günde tekrar</p>
+</div>
+<div class="flex flex-col items-center p-4 bg-slate-700/30 rounded-lg">
+<span class="text-sm text-slate-400 mb-2">📦 Kutu 4</span>
+<p class="text-2xl font-bold text-slate-100" id="box-4-count">0</p>
+<p class="text-xs text-slate-500 mt-1">7 günde tekrar</p>
+</div>
+<div class="flex flex-col items-center p-4 bg-slate-700/30 rounded-lg">
+<span class="text-sm text-slate-400 mb-2">📦 Kutu 5</span>
+<p class="text-2xl font-bold text-green-400" id="box-5-count">0</p>
+<p class="text-xs text-slate-500 mt-1">30 günde tekrar</p>
+</div>
+</div>
+</div>
+
+<!-- Deste Listesi İstatistikleri -->
+<div class="bg-card-dark rounded-xl border border-border-dark p-6">
+<h3 class="text-xl font-bold text-slate-100 mb-6">Deste İstatistikleri</h3>
+<div class="space-y-4" id="deck-stats">
+<!-- Dinamik olarak doldurulacak -->
+</div>
+</div>
+
+</div>
+</main>
+
+</body>
+<script src="js/storage.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/statistics.js"></script>
+</html>

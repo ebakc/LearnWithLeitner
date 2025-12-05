@@ -76,6 +76,48 @@ if (userSaysRight) {
 - Card CRUD
 - Box progression logic
 - Veri import/export
+- Modal panel management (showConfirmationModal, hideConfirmationModal)
+
+### Confirmation Modal Pattern
+
+Tüm sayfalar aynı modal pattern kullanır:
+
+```html
+<!-- Confirmation Modal -->
+<div
+  id="confirmation-modal"
+  class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/50 backdrop-blur-sm"
+>
+  <div
+    class="bg-card-dark rounded-xl border border-border-dark shadow-2xl shadow-black/50 w-96 max-w-[90%] p-6"
+  >
+    <h2 id="modal-title" class="text-xl font-bold text-slate-100 mb-2">
+      Onay Gerekli
+    </h2>
+    <p id="modal-message" class="text-slate-400 text-sm mb-6"></p>
+    <div class="flex gap-3">
+      <button id="modal-cancel">İptal/Devam</button>
+      <button id="modal-confirm">Sil/Çık</button>
+    </div>
+  </div>
+</div>
+```
+
+Kullanım:
+
+```javascript
+this.showConfirmationModal(
+  title, // Modal başlığı
+  message, // Açıklama
+  onConfirm // Callback function
+);
+```
+
+Sayfalar:
+
+- index.html: Desto silme
+- deckpage.html: Kart silme, desto silme
+- workpage.html: Çalışmadan çıkış
 
 ### index.html
 
@@ -83,6 +125,7 @@ if (userSaysRight) {
 - Kutu özeti göster (her kutudaki kart sayısı)
 - Yeni deste formu
 - Çalışmaya başla linkler
+- Modal panel (desto silme için)
 
 ### workpage.html
 
@@ -91,12 +134,42 @@ if (userSaysRight) {
 - Response buttons (Bunu Bildim / Bilemedim)
 - İlerleme bar
 - Deste adı ve istatistik
+- Modal panel (çalışmadan çıkış için)
+
+### deckpage.html
+
+- Deste kartlarını listele
+- Yeni kart ekleme formu
+- Kart silme butonu
+- Deste silme butonu
+- Modal panel (kart ve desto silme için)
+
+### statistics.html
+
+- Toplam kartlar
+- Master seviyesi (Kutu 5)
+- Başarı oranı (%)
+- Bugün çalışılan kartlar
+- Kutu dağılımı (visual display)
+- Son 7 gün aktivitesi (bar chart - hover shows count)
+- Deste bazlı istatistikler
+
+### settings.html
+
+- Tema seçimi (açık/koyu) - localStorage'a kaydedilir
+- Veri yönetimi:
+  - Verileri İndir (JSON export)
+  - Verileri Yükle (JSON import)
+  - Tüm Verileri Sil (with confirmation modal)
+- Hakkında bölümü
+- GitHub link
 
 ## State Management
 
 - Tüm state LocalStorage'da tutulur
 - App.js state'i manage eder ve HTML'e pass eder
 - İndir/upload işlemleri JSON parser ile yapılır
+- Tema tercihi `leitner_theme` key'inde saklanır (default: dark)
 
 ## Key Decisions
 
@@ -104,3 +177,5 @@ if (userSaysRight) {
 2. **Tailwind**: Styling hızlı ve consistent
 3. **LocalStorage**: Basit ama yeterli MVP için
 4. **UUID**: Card/Deck uniqueness için
+5. **Separate pages**: Statistics ve Settings ayrı sayfalar (index.html'i temiz tutar)
+6. **Tema toggle**: Dark by default, localStorage'a kaydedilir

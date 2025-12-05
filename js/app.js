@@ -14,7 +14,22 @@ class LeitnerApp {
    * Uygulamayı başlat
    */
   init() {
+    this.loadTheme();
     this.loadPageType();
+  }
+
+  /**
+   * Kaydedilmiş tema tercihini yükle
+   */
+  loadTheme() {
+    const savedTheme = localStorage.getItem('leitner_theme') || 'dark';
+    const html = document.documentElement;
+    
+    if (savedTheme === 'light') {
+      html.classList.remove('dark');
+    } else {
+      html.classList.add('dark');
+    }
   }
 
   /**
@@ -132,23 +147,6 @@ class LeitnerApp {
         }
       });
     }
-
-    // JSON import/export butonları
-    const exportBtn = document.getElementById('export-data-btn');
-    const importBtn = document.getElementById('import-data-btn');
-    const importFile = document.getElementById('import-file-input');
-
-    if (exportBtn) {
-      exportBtn.addEventListener('click', () => this.exportData());
-    }
-
-    if (importBtn) {
-      importBtn.addEventListener('click', () => importFile?.click());
-    }
-
-    if (importFile) {
-      importFile.addEventListener('change', (e) => this.importData(e));
-    }
   }
 
   /**
@@ -257,37 +255,6 @@ class LeitnerApp {
    */
   openDeckCards(deckId) {
     window.location.href = `deckpage.html?id=${deckId}`;
-  }
-
-  /**
-   * Veri dışa aktar
-   */
-  exportData() {
-    const data = Storage.exportData();
-    const filename = `leitner-export-${new Date().toISOString().split('T')[0]}.json`;
-    Utils.downloadJSON(data, filename);
-    Utils.showToast('Veriler indirildi', 'success');
-  }
-
-  /**
-   * Veri içe aktar
-   */
-  importData(event) {
-    const file = event.target.files[0];
-    if (!file) return;
-
-    Utils.readJSONFile(file)
-      .then(data => {
-        if (Storage.importData(JSON.stringify(data))) {
-          this.renderDecks();
-          Utils.showToast('Veriler başarıyla yüklendi!', 'success');
-        } else {
-          Utils.showToast('Veri yükleme başarısız', 'error');
-        }
-      })
-      .catch(error => {
-        Utils.showToast('Dosya okuma hatası: ' + error.message, 'error');
-      });
   }
 
   // ======== WORK PAGE ========
@@ -406,9 +373,13 @@ class LeitnerApp {
 
     if (closeBtn) {
       closeBtn.addEventListener('click', () => {
-        if (confirm('Çalışmayı sonlandırmak istediğinizden emin misiniz?')) {
-          window.location.href = 'index.html';
-        }
+        this.showConfirmationModal(
+          'Çalışmayı Sonlandır',
+          'Çalışmayı sonlandırmak istediğinizden emin misiniz? İlerlemeniz kaydedilmiştir.',
+          () => {
+            window.location.href = 'index.html';
+          }
+        );
       });
     }
 

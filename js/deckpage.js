@@ -9,6 +9,7 @@ class DeckPage {
   }
 
   init() {
+    this.loadTheme();
     const params = new URLSearchParams(window.location.search);
     this.deckId = params.get('id');
 
@@ -20,6 +21,20 @@ class DeckPage {
     this.loadDeckInfo();
     this.renderCards();
     this.setupEventListeners();
+  }
+
+  /**
+   * Kaydedilmiş tema tercihini yükle
+   */
+  loadTheme() {
+    const savedTheme = localStorage.getItem('leitner_theme') || 'dark';
+    const html = document.documentElement;
+    
+    if (savedTheme === 'light') {
+      html.classList.remove('dark');
+    } else {
+      html.classList.add('dark');
+    }
   }
 
   /**

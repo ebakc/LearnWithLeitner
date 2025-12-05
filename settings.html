@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Deste Kartlarını Yönet - Learn with Leitner</title>
+<title>Ayarlar - Learn with Leitner</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -73,8 +73,7 @@
       border-color: #e5e7eb;
     }
     
-    html:not(.dark) .text-slate-100,
-    html:not(.dark) .text-slate-200 {
+    html:not(.dark) .text-slate-100 {
       color: #1f2937;
     }
     
@@ -92,14 +91,6 @@
       background-color: #d1d5db;
     }
     
-    html:not(.dark) .placeholder\:text-slate-400::placeholder {
-      color: #9ca3af;
-    }
-    
-    html:not(.dark) .text-slate-50 {
-      color: #1f2937;
-    }
-    
     html:not(.dark) .bg-red-900\/30 {
       background-color: rgba(159, 18, 57, 0.1);
     }
@@ -108,14 +99,36 @@
       background-color: rgba(159, 18, 57, 0.15);
     }
     
-    html:not(.dark) input {
-      background-color: #ffffff;
-      border-color: #d1d5db;
+    html:not(.dark) .text-slate-50 {
       color: #1f2937;
     }
     
-    html:not(.dark) input:focus {
-      border-color: #38bdf8;
+    html:not(.dark) .text-red-400 {
+      color: #dc2626;
+    }
+    
+    html:not(.dark) .text-red-600 {
+      background-color: #dc2626;
+    }
+    
+    html:not(.dark) .text-red-600:hover {
+      background-color: #b91c1c;
+    }
+    
+    html:not(.dark) .bg-red-900\/50 {
+      background-color: rgba(159, 18, 57, 0.1);
+    }
+    
+    html:not(.dark) .bg-red-900\/50:hover {
+      background-color: rgba(159, 18, 57, 0.15);
+    }
+    
+    html:not(.dark) .bg-slate-700\/50 {
+      background-color: rgba(229, 231, 235, 0.5);
+    }
+    
+    html:not(.dark) .bg-slate-700\/50:hover {
+      background-color: rgba(203, 213, 225, 0.7);
     }
     
     html:not(.dark) #modal-title {
@@ -148,6 +161,7 @@
     html:not(.dark) a {
       color: #38bdf8;
     }
+</style>
   </style>
 </head>
 <body class="font-display bg-background-dark text-slate-100">
@@ -156,55 +170,95 @@
 <a href="index.html" class="text-primary hover:text-primary/80 transition-colors">
 <span class="material-symbols-outlined">arrow_back</span>
 </a>
-<h2 class="text-lg font-bold text-slate-50" id="deck-title">Deste Adı</h2>
-</div>
-<div class="flex gap-2">
-<button id="delete-deck-btn" class="p-2 text-slate-300 hover:text-red-400 hover:bg-slate-700 rounded-full transition-colors">
-<span class="material-symbols-outlined">delete</span>
-</button>
+<h2 class="text-lg font-bold text-slate-50">Ayarlar</h2>
 </div>
 </header>
 
 <main class="p-6 lg:p-10">
-<div class="max-w-4xl mx-auto">
-<!-- Kart Ekleme Formu -->
-<div class="bg-card-dark rounded-xl border border-border-dark p-6 mb-8">
-<h3 class="text-xl font-bold text-slate-100 mb-6">Yeni Kart Ekle</h3>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+<div class="max-w-2xl mx-auto">
+
+<!-- Tema Seçimi -->
+<div class="bg-card-dark rounded-xl border border-border-dark p-6 mb-6">
+<div class="flex items-center justify-between">
 <div>
-<label class="block text-sm font-medium text-slate-300 mb-2">Soru</label>
-<input type="text" id="card-question-input" placeholder="Soru yazın..." class="w-full h-10 px-4 bg-slate-700 border border-border-dark focus:border-primary focus:outline-none rounded-lg text-slate-100 placeholder:text-slate-400 text-sm"/>
+<h3 class="text-lg font-bold text-slate-100 mb-1">Tema</h3>
+<p class="text-slate-400 text-sm">Uygulamanın görünümünü değiştir</p>
 </div>
-<div>
-<label class="block text-sm font-medium text-slate-300 mb-2">Cevap</label>
-<input type="text" id="card-answer-input" placeholder="Cevap yazın..." class="w-full h-10 px-4 bg-slate-700 border border-border-dark focus:border-primary focus:outline-none rounded-lg text-slate-100 placeholder:text-slate-400 text-sm"/>
-</div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-<div>
-<label class="block text-sm font-medium text-slate-300 mb-2">Kategori (Opsiyonel)</label>
-<input type="text" id="card-category-input" placeholder="Kategori..." class="w-full h-10 px-4 bg-slate-700 border border-border-dark focus:border-primary focus:outline-none rounded-lg text-slate-100 placeholder:text-slate-400 text-sm"/>
-</div>
-<div class="flex items-end">
-<button id="add-card-btn" class="w-full flex items-center justify-center gap-2 h-10 px-4 bg-primary text-slate-900 text-sm font-bold rounded-lg hover:bg-primary/90 transition-colors">
-<span class="material-symbols-outlined text-sm">add_circle</span>
-<span>Kartı Ekle</span>
+<div class="flex gap-2">
+<button id="theme-light" class="px-4 py-2 rounded-lg bg-slate-700 text-slate-300 font-medium hover:bg-slate-600 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">light_mode</span>
+<span class="hidden sm:inline">Açık</span>
+</button>
+<button id="theme-dark" class="px-4 py-2 rounded-lg bg-primary text-slate-900 font-medium hover:bg-primary/90 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">dark_mode</span>
+<span class="hidden sm:inline">Koyu</span>
 </button>
 </div>
 </div>
 </div>
 
-<!-- Kartlar Listesi -->
-<div>
-<h3 class="text-xl font-bold text-slate-100 mb-4">Kartlar</h3>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="cards-container"></div>
+<!-- Veri Yönetimi -->
+<div class="bg-card-dark rounded-xl border border-border-dark p-6 mb-6">
+<h3 class="text-lg font-bold text-slate-100 mb-4">Verileri Yönet</h3>
+
+<!-- Export -->
+<div class="mb-4 pb-4 border-b border-border-dark">
+<button id="export-data-btn" class="w-full flex items-center justify-between p-4 bg-slate-700/50 hover:bg-slate-700 rounded-lg transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">download</span>
+<div class="text-left">
+<p class="font-semibold text-slate-100">Verileri İndir</p>
+<p class="text-xs text-slate-400">JSON formatında yedek oluştur</p>
 </div>
+</div>
+<span class="material-symbols-outlined text-slate-400">arrow_forward</span>
+</button>
+</div>
+
+<!-- Import -->
+<div class="mb-4 pb-4 border-b border-border-dark">
+<button id="import-data-btn" class="w-full flex items-center justify-between p-4 bg-slate-700/50 hover:bg-slate-700 rounded-lg transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">upload</span>
+<div class="text-left">
+<p class="font-semibold text-slate-100">Verileri Yükle</p>
+<p class="text-xs text-slate-400">JSON dosyasından verileri geri yükle</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400">arrow_forward</span>
+</button>
+<input type="file" id="import-file-input" accept=".json" style="display: none;"/>
+</div>
+
+<!-- Reset -->
+<div>
+<button id="reset-data-btn" class="w-full flex items-center justify-between p-4 bg-red-900/30 hover:bg-red-900/50 rounded-lg transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-red-400">delete_sweep</span>
+<div class="text-left">
+<p class="font-semibold text-slate-100">Tüm Verileri Sil</p>
+<p class="text-xs text-slate-400">Tüm desteler ve kartlar silinecek (geri alınamaz)</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-red-400">arrow_forward</span>
+</button>
+</div>
+</div>
+
+<!-- Hakkında -->
+<div class="bg-card-dark rounded-xl border border-border-dark p-6">
+<h3 class="text-lg font-bold text-slate-100 mb-4">Hakkında</h3>
+<p class="text-slate-400 text-sm mb-4">Learn with Leitner - Spaced repetition ile etkili öğrenme</p>
+<p class="text-slate-500 text-xs">Sürüm 1.0.0</p>
+<a href="https://github.com/ebakc/LearnWithLeitner" target="_blank" class="text-primary hover:underline text-sm inline-block mt-2">GitHub'da görüntüle →</a>
+</div>
+
 </div>
 </main>
 
 <!-- Confirmation Modal -->
 <div id="confirmation-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/50 backdrop-blur-sm">
-  <div class="bg-card-dark rounded-xl border border-border-dark shadow-2xl shadow-black/50 w-96 max-w-[90%] p-6 animate-in">
+  <div class="bg-card-dark rounded-xl border border-border-dark shadow-2xl shadow-black/50 w-96 max-w-[90%] p-6">
     <h2 id="modal-title" class="text-xl font-bold text-slate-100 mb-2">Onay Gerekli</h2>
     <p id="modal-message" class="text-slate-400 text-sm mb-6"></p>
     <div class="flex gap-3">
@@ -221,5 +275,5 @@
 </body>
 <script src="js/storage.js"></script>
 <script src="js/utils.js"></script>
-<script src="js/deckpage.js"></script>
+<script src="js/settings.js"></script>
 </html>
