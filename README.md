@@ -274,29 +274,6 @@ Learn with Leitner/
 - **Statistics:** Anlık hesaplama
 - **Memory Usage:** ~ 2-5 MB (kart sayısına bağlı)
 
-## 📝 Lisans
-
-MIT License — Dilediğiniz gibi geliştirip kullanabilirsiniz.
-
-```
-MIT License
-
-Copyright (c) 2025 Emre Burak Akçealan
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-```
 
 ## 💡 İpuçları
 
@@ -316,15 +293,6 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 4. Branch'ı push et (`git push origin feature/IyileştirmE`)
 5. Pull Request gönder
 
-## 🗺️ Yol Haritası (Phase 3)
-
-- [ ] Arama fonksiyonu
-- [ ] Kategori filtreleme
-- [ ] Toplu kart işlemleri
-- [ ] Ses efektleri
-- [ ] Gelişmiş istatistikler (grafikler)
-- [ ] Cloud senkronizasyonu
-- [ ] Mobile uygulama (React Native)
 
 ## 📞 İletişim & Destek
 
@@ -352,6 +320,6 @@ Leitner sistemi ile etkili öğrenmeyi deneyimle. Hedefine ulaşman dileğiyle! 
 
 **⭐ Bu projeyi beğendiysen, bir yıldız bırakmayı unutma!**
 
-[GitHub Deposu](https://github.com/ebakc/LearnWithLeitner) • [İssue Bildir](https://github.com/ebakc/LearnWithLeitner/issues) • [Discussions](https://github.com/ebakc/LearnWithLeitner/discussions)
+[GitHub Deposu](https://github.com/ebakc/LearnWithLeitner) • [İssue Bildir](https://github.com/ebakc/LearnWithLeitner/issues)
 
 </div>
