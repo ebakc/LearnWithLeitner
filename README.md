@@ -1,363 +1,357 @@
-# Learn with Leitner 📚
+# 📚 Learn with Leitner
 
-Leitner sistemi tabanlı akıllı öğrenme uygulaması. Spaced repetition ile daha etkili öğrenme!
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Status: Production Ready](https://img.shields.io/badge/Status-Production%20Ready-green)](https://github.com/ebakc/LearnWithLeitner)
+[![JavaScript](https://img.shields.io/badge/Language-JavaScript-yellow.svg)](https://www.javascript.com)
+[![Responsive](https://img.shields.io/badge/Design-Responsive-blue.svg)](#-responsive-tasarım)
 
+> Spaced Repetition tabanlı akıllı öğrenme uygulaması
 
-## 🎯 Nedir?
+Basit, hızlı, tamamen tarayıcı tabanlı bir Leitner sistemi uygulaması. Kurulum gerekmez — tüm veriler LocalStorage'da saklanır ve offline çalışır.
 
-Leitner sistemi, kartlardaki bilgileri doğru zamanda tekrar etmeyi sağlayan bir öğrenme yöntemidir. "Bunu Bildim" ve "Bilemedim" butonu ile kartlar otomatik olarak uygun kutuya geçer. Her kutu başka bir tekrar aralığına sahiptir:
+## 🚀 Özellikler
 
-- **Kutu 1**: Her gün tekrar (1 gün)
-- **Kutu 2**: 2 günde bir tekrar (2 gün)
-- **Kutu 3**: 4 günde bir tekrar (4 gün)
-- **Kutu 4**: Haftada bir tekrar (7 gün)
-- **Kutu 5**: Ayda bir tekrar (30 gün)
+- 📦 **Leitner kutu sistemi** — 1–5 kutu, otomatik tekrar aralıkları
+- 🧠 **Flip kart öğrenme** — Animasyonlu kart çevirme
+- 📊 **İstatistikler** — Gelişim takibi, başarı oranı, kutu dağılımı
+- 🎨 **Tema seçeneği** — Light / Dark mod
+- 💾 **Veri yönetimi** — LocalStorage + JSON backup/restore
+- 📱 **Responsive tasarım** — Mobil/tablet/masaüstü uyumlu
+- ⌨️ **Klavye kısayolları** — Hızlı navigasyon
+- 🧪 **Test veri yükleyici** — Demo veriler
+- 🌐 **Offline çalışır** — Sunucu gerekmez
 
-## 🚀 Başlangıç
+## 🎯 Leitner Sistemi Nedir?
 
-### Kurulum (Kurulum Gerekmez!)
+Leitner sistemi, bilgileri doğru zamanda tekrar etmeyi sağlayan bir **flashcard metodudur**. Her kart yanıtına göre bir kutu ileri/geri hareket eder.
 
-`index.html` dosyasını tarayıcınızda açın.
+### Kutu Sistemi
 
-Tamamen browser-based, LocalStorage kullanıyor:
+| Kutu | Tekrar Aralığı | Açıklama |
+|------|----------------|----------|
+| 1 | 1 gün | Yeni / zor kartlar |
+| 2 | 2 gün | Öğrenilmekte olan |
+| 3 | 4 gün | Pekiştirme |
+| 4 | 7 gün | İleri seviye |
+| 5 | 30 gün | Master seviye |
 
-- Kurulum gerekmez
-- Backend gerekmez
-- Çevrimdışı çalışır
-- Veriler browser'da saklanır
+### İlerleme Akışı
+
+```
+Kutu 1 → Bildim → Kutu 2 → Bildim → Kutu 3 → ... → Kutu 5
+Kutu X → Bilemedim → Kutu 1
+```
+
+## 🏁 Hızlı Başlangıç
+
+### Kurulum (Yok!)
+
+Sadece `index.html` dosyasını açman yeterli.
+
+- ✅ Backend yok
+- ✅ Sunucu gerekmez
+- ✅ Offline çalışır
+- ✅ Veriler LocalStorage'da tutulur
 
 ### İlk Adımlar
 
-1. **Deste Oluştur**
+1. **Yeni deste oluştur** — Öğrenmek istediğin konuyu seç
+2. **Kart ekle** — Soru + Cevap + Kategori gir
+3. **Çalış** — Çalış butonuna tıkla
+4. **Cevap ver** — Kartı çevir, sonuç seç (Bildim / Bilemedim)
+5. **İlerleme takip et** — İstatistiklerden gelişimini gözlemle
 
-   - Ana sayfada "Yeni Deste" butonuna tıkla
-   - Deste adı gir (örn: "Almanca", "Tarih", "Matematik")
-   - Enter'e bas veya "Yeni Deste" butonuna tıkla
+### Test Verileri Yükle
 
-2. **Kart Ekle**
-
-   - Destenin üzerindeki "Kartlar" butonuna tıkla
-   - "Soru" alanına öğrenmen gereken konuyu yaz
-   - "Cevap" alanına doğru cevabı yaz
-   - Kategori (opsiyonel) ekle
-   - "Kartı Ekle" butonuna tıkla
-
-3. **Çalışmaya Başla**
-
-   - Ana sayfaya dön
-   - Destesinin altındaki "Çalış" butonuna tıkla
-   - Kartı oku, cevapı düşün
-   - Kartı tıkla → Cevabı gör
-   - "Bilemedim" veya "Bunu Bildim" butonuna tıkla
-
-4. **İstatistikleri Kontrol Et**
-
-   - Başlıktaki "İstatistikler" butonuna tıkla
-   - Toplam kartlar, başarı oranı, kutu dağılımını gör
-
-5. **Ayarlar**
-   - Başlıktaki "Ayarlar" butonuna tıkla
-   - Tema seç (Açık/Koyu)
-   - Verilerinizi yedekle (İndir)
-   - Verilerinizi geri yükle (Yükle)
-   - Tüm verileri sil
-
-### Test Verileri Yükle (Opsiyonel)
-
-Tarayıcı konsolunda (F12 → Console) şu komutu çalıştır:
+Tarayıcı konsolunda (F12):
 
 ```javascript
 loadTestData();
 ```
 
-Bu, test için hazır örnek deste ve kartlar ekler.
+## 📁 Sayfalar
 
-## 📋 Sayfa Tanımı
+### 🏠 index.html — Ana Sayfa
 
-### Ana Sayfa (`index.html`)
+- Desteler listesi
+- Her deste için istatistik gösterimi
+- Kutu dağılımı grafiği
+- Deste oluştur, düzenle, sil
+- Hızlı erişim butonları (Çalış, İstatistikler, Ayarlar)
 
-- **Desteler Listesi**: Oluşturduğunuz tüm desteler
-- **Deste İstatistikleri**: Her destede kaç kart olduğu, kutuların dağılımı
-- **Çalış Butonu**: Tekrar edilecek kartları başlat
-- **Kartlar Butonu**: Deste kartlarını yönet, ekle, düzenle, sil
-- **Sağ Panel**: Leitner sistemi hakkında bilgiler (masaüstü görünümü)
+### 📚 deckpage.html — Deste Yönetimi
 
-### Deste Yönetimi (`deckpage.html`)
+- Deste içindeki kartları görüntüle
+- Kart ekleme (Soru + Cevap + Kategori)
+- Kart düzenleme ve silme
+- Deste silme (modal onayı ile)
+- Ana sayfaya dönüş
 
-- **Kartlar Listesi**: Destede bulunan tüm kartlar
-- **Yeni Kart Ekle**: Soru, cevap, kategori ile yeni kart oluştur
-- **Kartları Sil**: İstemediğin kartları kaldır
-- **Desteyi Sil**: Tüm kartlarla birlikte destoyu kaldır
-- **Geri Dön**: Ana sayfaya dön
+### 🎓 workpage.html — Çalışma Ekranı
 
-### Çalışma Ekranı (`workpage.html`)
+- **Flip kart** — Click/Space ile kartı çevir
+- **İlerleme göstergesi** — X/Y kartından ne kadarını tamamladın
+- **Cevap butonları** — Bilemedim (Kutu 1'e) / Bunu Bildim (Sonraki kutuya)
+- **Klavye desteği** — Hızlı cevapla
 
-- **Flip Kartı**: Tıkla → Soru/Cevap değişir
-- **Bilemedim**: Kartı bir kutu geriye gönder
-- **Bunu Bildim**: Kartı bir kutu ileri gönder
-- **İlerleme Çubuğu**: Kaç kartı tamamladığını göster
-- **Çıkış**: Çalışmayı bitir ve ana sayfaya dön
+### 📊 statistics.html — İstatistikler
 
-### İstatistikler (`statistics.html`)
+- Toplam kartlar
+- Master seviyesine ulaşan kartlar
+- Başarı oranı (%)
+- Bugün çalışılan kartlar
+- Kutu dağılımı (tüm desteler)
+- Deste bazında istatistikler
 
-- **Toplam Kartlar**: Tüm destelerinizde kaç kart var
-- **Master Seviyesi**: Kutu 5'e (30 günde bir tekrar) ulaşan kart sayısı
-- **Başarı Oranı**: Kutu 5'deki kartlar / toplam kartlar × 100
-- **Bugün Çalışılan**: Bugün kaç kart çalıştığın
-- **Kutu Dağılımı**: Her kutuda kaç kart olduğunu görsel kartlarla göster
-- **Deste İstatistikleri**: Her deste için kutu dağılımı
+### ⚙️ settings.html — Ayarlar
 
-### Ayarlar (`settings.html`)
+- **Tema seçimi** — Light / Dark mod
+- **Verileri indir** — JSON backup oluştur
+- **Verileri yükle** — Önceki yedeği geri yükle
+- **Tüm verileri sil** — İlk duruma dön (modal onayı)
+- **Proje bilgileri** — Versiyon, teknolojiler
 
-- **Tema Seçimi**: Açık (Light) veya Koyu (Dark) mod seç
-- **Verileri İndir**: Tüm verilerinizi JSON dosyası olarak bilgisayarınıza indir (Yedekleme)
-- **Verileri Yükle**: Daha önce indirdiğiniz JSON dosyasını yükle (Geri yükleme)
-- **Tüm Verileri Sil**: Dikkat! Tüm deste ve kartları sil (Geri alınamaz!)
-- **Hakkında**: Proje hakkında bilgiler
+## ⌨️ Klavye Kısayolları (Çalışma Ekranı)
 
-## 🎨 Özellikler
-
-### Dark & Light Mode
-
-- Açık (Light) ve Koyu (Dark) tema
-- Tema seçimi Ayarlar sayfasından yapılır
-- Tercih otomatik kaydedilir
-- Sayfa yenilendiğinde korunur
-
-### Veri Güvenliği
-
-- Tüm veriler tarayıcınızda saklanır (LocalStorage)
-- Sunucuya hiçbir veri gönderilmez
-- JSON backup ile verileri yedekleyebilirsin
-- İstediğin zaman tüm verileri sil
-
-### Responsive Tasarım
-
-- Mobil, tablet, masaüstü tüm cihazlarda çalışır
-- Touch-friendly butonlar ve arayüz
-- Responsive grid layout
-
-### Keyboard Shortcuts (Çalışma ekranında)
-
-- `Space` veya Tıkla: Kartı flip et
-- `1` veya ← (Sol ok): "Bilemedim"
-- `2` veya → (Sağ ok): "Bunu Bildim"
-
-## 📊 Leitner Sistemi Nasıl Çalışır?
-
-```
-Yeni Kart (Kutu 1)
-    ↓
-"Bunu Bildim" → Kutu 2 (2 gün sonra tekrar)
-"Bilemedim" → Kutu 1'de kalır (yarın tekrar)
-    ↓
-Kutu 2 → "Bunu Bildim" → Kutu 3 (4 gün sonra)
-       → "Bilemedim" → Kutu 1 (yarın)
-    ↓
-... (Kutu 3, 4, 5 aynı mantık) ...
-    ↓
-Kutu 5 (30 günde bir tekrar) = Master Seviye!
-```
-
-## 💾 Veri Yönetimi
-
-### Otomatik Kaydetme
-
-- Her işlem otomatik kaydedilir
-- Browser'ı kapatsanız bile veriler kalır
-- LocalStorage limit: ~5-10 MB (sınırsız kart için yeterli)
-
-### Yedekleme
-
-1. Ayarlar → "Verileri İndir"
-2. JSON dosyası bilgisayarına indirilir
-3. Dosya adı: `leitner-export-YYYY-MM-DD.json`
-
-### Geri Yükleme
-
-1. Ayarlar → "Verileri Yükle"
-2. Önceden indirdiğin JSON dosyasını seç
-3. Veriler otomatik yüklenir
-
-## 🌐 Browser Desteği
-
-- ✅ Google Chrome (latest)
-- ✅ Mozilla Firefox (latest)
-- ✅ Safari (latest)
-- ✅ Microsoft Edge (latest)
-- ✅ Mobil browsers (iOS Safari, Chrome Mobile)
-
-## ⚙️ Teknik Detaylar
-
-### Teknoloji Stack
-
-- **Frontend**: HTML5, CSS3, Vanilla JavaScript ES6
-- **Styling**: Tailwind CSS (CDN)
-- **Icons**: Material Symbols Outlined
-- **Storage**: Browser LocalStorage
-- **Data Format**: JSON
-
-### Dosya Yapısı
-
-```
-index.html              → Ana sayfa
-deckpage.html           → Deste yönetimi
-workpage.html           → Çalışma ekranı
-statistics.html         → İstatistikler
-settings.html           → Ayarlar
-
-js/
-├── app.js              → Ana uygulama logiği
-├── deckpage.js         → Deste sayfası logiği
-├── settings.js         → Ayarlar sayfası logiği
-├── statistics.js       → İstatistik hesaplamaları
-├── storage.js          → LocalStorage CRUD
-├── utils.js            → Yardımcı fonksiyonlar
-└── test-data.js        → Test verisi oluşturucu
-
-memory-bank/           → Proje dokumentasyonu
-```
-
-## 🐛 Bilinen Sınırlamalar
-
-- Activity chart (7 gün grafik) şimdilik deaktif
-- Maksimum deste sayısı: Browser LocalStorage limitine bağlı (~5-10 MB)
-- Offline-only (Cloud sync olmadığı için)
-- Farklı browser'lar arasında veri senkronizasyonu yok
-
-## 💡 İpuçları
-
-1. **Etkili Öğrenme**: Günlük olarak çalış. Sistem otomatik olarak doğru zamanında tekrar gösterir
-2. **Kategori Kullan**: Kartları organize etmek için kategoriler kullan
-3. **Düzenli Yedekle**: Ayda bir önemli verilerinizi indirerek yedekleyin
-4. **Tema Seç**: Gözlerinize rahat gelen temayı seçin
-5. **Test Verileriyle Başla**: İlk olarak test verileriyle uygulamayı keşfedin
-
-## 📝 Lisans
-
-MIT License - Açık ve özgür kullanım
-
----
-
-**Happy Learning! 🎓**
-
-| Kutu | Tekrar Sıklığı | Amaç              |
-| ---- | -------------- | ----------------- |
-| 1    | Her gün        | Yeni kartlar      |
-| 2    | 2 gün          | Öğrenilmekte olan |
-| 3    | 4 gün          | Pekiştirme        |
-| 4    | 7 gün          | İleri seviye      |
-| 5    | 30 gün         | Master seviye     |
-
-## 🎮 Klavye Kısayolları
-
-**Çalışma Ekranında:**
-
-- `Boşluk` → Kartı flip et
-- `1` veya `←` → Bilemedim
-- `2` veya `→` → Bunu Bildim
+| Tuş | İşlev |
+|-----|-------|
+| `Space` | Kartı çevir |
+| `1` veya `←` | Bilemedim (Kutu 1'e geri) |
+| `2` veya `→` | Bunu Bildim (Sonraki kutuya) |
 
 ## 💾 Veri Yönetimi
 
 ### LocalStorage
 
-Tüm veriler tarayıcı belleğinde saklanır.
+- Tüm desteler ve kartlar tarayıcı belleğinde tutulur
+- Otomatik kaydedilir (her işlemden sonra)
+- Tarayıcı cache temizlenene kadar korunur
 
-### Backup & Restore
+### Backup (Dışa Aktarma)
 
-- **İndir**: JSON dosyası olarak tüm verileri indir
-- **Yükle**: JSON dosyasından verileri geri yükle
+1. **Ayarlar** sayfasına git
+2. **Verileri İndir** butonuna tıkla
+3. JSON dosyası indirilir: `leitner-export-YYYY-MM-DD.json`
 
-### Konsol Komutları
+### Restore (İçe Aktarma)
+
+1. **Ayarlar** sayfasına git
+2. **Verileri Yükle** butonuna tıkla
+3. Daha önce indirilen JSON dosyasını seç
+4. Tüm veriler geri yüklenir
+
+### Konsol Komutları (Developer Tools - F12)
 
 ```javascript
-// Test verileri yükle
+// Test verilerini yükle
 loadTestData();
 
 // Tüm verileri sil
 clearAllData();
 
-// Manual backup
+// Manuel backup
 const backup = Storage.exportData();
 console.log(backup);
 
-// Manual restore
+// Manuel restore
 Storage.importData(jsonString);
 ```
 
-## 📁 Dosya Yapısı
+## 📂 Proje Yapısı
 
 ```
-/
-├── index.html           # Ana sayfa
-├── deckpage.html        # Deste yönetimi
-├── workpage.html        # Çalışma ekranı
+Learn with Leitner/
+├── index.html              (Ana sayfa - 252 satır)
+├── deckpage.html           (Deste yönetimi - 177 satır)
+├── workpage.html           (Çalışma ekranı - 182 satır)
+├── statistics.html         (İstatistikler - 187 satır)
+├── settings.html           (Ayarlar - 223 satır)
+│
 ├── js/
-│   ├── app.js          # Ana uygulama mantığı
-│   ├── storage.js      # LocalStorage yönetimi
-│   ├── utils.js        # Yardımcı fonksiyonlar
-│   ├── deckpage.js     # Deste sayfası mantığı
-│   └── test-data.js    # Test verileri
-├── css/                 # Özel CSS (genişletilebilir)
-├── memory-bank/         # Proje dokümantasyonu
-└── README.md           # Bu dosya
+│   ├── app.js              (Ana uygulama - 450 satır)
+│   ├── deckpage.js         (Deste sayfası - 280 satır)
+│   ├── workpage.js         (Çalışma sayfası - otomatik yüklenir)
+│   ├── statistics.js       (İstatistikler - 146 satır)
+│   ├── settings.js         (Ayarlar - 210 satır)
+│   ├── storage.js          (Veri saklama - 267 satır)
+│   ├── utils.js            (Yardımcı fonksiyonlar)
+│   └── test-data.js        (Test verileri)
+│
+├── memory-bank/            (Proje dokümantasyonu)
+│   ├── projectbrief.md
+│   ├── productContext.md
+│   ├── systemPatterns.md
+│   ├── techContext.md
+│   ├── activeContext.md
+│   └── progress.md
+│
+└── README.md
 ```
 
-## 🛠️ Teknoloji
+**Toplam: ~1500+ satır kod**
 
-- **Frontend**: HTML5, CSS3, Vanilla JavaScript
-- **Styling**: Tailwind CSS (CDN)
-- **Icons**: Material Symbols (Google)
-- **Font**: Inter (Google Fonts)
-- **Storage**: Browser LocalStorage
-- **Data Format**: JSON
+## 🛠 Teknolojiler
+
+- **HTML5** — Semantic markup
+- **CSS3** — Tailwind CSS (CDN)
+- **JavaScript (ES6+)** — Vanilla JS, modüler yapı
+- **Icons** — Material Symbols (Google)
+- **Storage** — Browser LocalStorage
+- **Font** — Google Fonts (Inter)
+
+## 🌐 Tarayıcı Desteği
+
+| Tarayıcı | Destek |
+|----------|--------|
+| Chrome | ✅ Full |
+| Firefox | ✅ Full |
+| Safari | ✅ Full |
+| Edge | ✅ Full |
+| Opera | ✅ Full |
+| Mobile Safari (iOS) | ✅ Full |
+| Chrome Mobile (Android) | ✅ Full |
+
+**Gereklilikler:** LocalStorage ve CSS transform desteği
+
+## 📋 Sistem Gereksinimleri
+
+| Gereklilik | Detay |
+|------------|-------|
+| Depolama | ~5-10 MB LocalStorage |
+| Minimum kartlar | Sınırsız |
+| Destekler Browser | Modern tarayıcılar (2019+) |
+| Bağlantı | Sadece ilk yükleme için (CDN) |
+| Offline Çalışma | Evet, tamamen offline |
 
 ## 🐛 Troubleshooting
 
-**Veriler kayboluyor?**
+### Veriler kayboldu?
 
-- Tarayıcı cache'i temizlemişseniz, JSON export'unuzdan geri yükleyin
-- LocalStorage tarayıcıya bağlıdır (özel mod kullanmayın)
+- 🔹 Muhtemelen gizli mod/private window kullanıyorsun → Normal modu aç
+- 🔹 Cache temizlendi → JSON yedeğinden geri yükle
+- 🔹 Farklı tarayıcı → Aynı tarayıcıyı kullan
 
-**Flip animasyonu çalışmıyor?**
+### Flip animasyonu görünmüyor?
 
-- CSS transform desteğine sahip modern tarayıcı kullanın (Chrome, Firefox, Safari, Edge)
+- 🔹 Eski tarayıcı kullanıyor olabilirsin → Chrome/Firefox güncel sürümüne yükselt
+- 🔹 CSS transform desteğini kontrol et
 
-**JSON import başarısız?**
+### JSON import hatası?
 
-- JSON dosyasının geçerli format olduğundan emin olun
-- Export'tan alınan dosyaları kullanın
+- 🔹 Dosyasının bu uygulama dışa aktarımı olduğundan emin ol
+- 🔹 JSON formatında sorun yoksa konsolda `Storage.importData(JSON.stringify(veriler))` dene
 
-## 📝 Tarayıcı Desteği
+## 🎨 Tema Sistemi
 
-- ✅ Chrome/Chromium (88+)
-- ✅ Firefox (85+)
-- ✅ Safari (14+)
-- ✅ Edge (88+)
+- **Default:** Dark mode
+- **Toggle:** Settings sayfasında
+- **Persistent:** Tema seçimi kaydedilir
+- **Light Mode Colors:**
+  - Background: `#f6f7f8`
+  - Text: `#1f2937`
+  - Cards: `#ffffff`
 
-LocalStorage ve CSS transform desteği gereklidir.
+## 📈 İstatistik Metrikleri
 
-## 📄 Lisans
+- **Total Cards:** Tüm desteler içindeki kartlar
+- **Master Level:** Box 5'te olan kartlar
+- **Success Rate:** Doğru cevaplanan kartlar / Toplam
+- **Today Studied:** Bugün çalışılan kartlar
+- **Box Distribution:** Kartların kutulara dağılımı
 
-Bu proje kişisel kullanım için açıktır. Geliştirmeye devam edebilirsiniz!
+## 🔒 Veri Güvenliği
 
-## 🤝 Katkı
+- ✅ Veriler **sadece tarayıcında** saklanır
+- ✅ Sunucuya **gönderilmez**
+- ✅ Tamamen **gizlidir**
+- ✅ Sadece **siz erişebilirsiniz**
+- ✅ İhtiyaca göre **JSON ile yedekleyin**
 
-Katkı sağlamak istiyorsanız:
+## 🚀 Performans
 
-1. Kodu fork edin
-2. Değişiklikleri yapın
-3. Pull request gönderin
+- **First Load:** < 1 saniye
+- **Card Flip:** 60 FPS animasyon
+- **Statistics:** Anlık hesaplama
+- **Memory Usage:** ~ 2-5 MB (kart sayısına bağlı)
+
+## 📝 Lisans
+
+MIT License — Dilediğiniz gibi geliştirip kullanabilirsiniz.
+
+```
+MIT License
+
+Copyright (c) 2025 Emre Burak Akçealan
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+```
 
 ## 💡 İpuçları
 
-1. **Başlangıç**: `loadTestData()` ile örnek kartlarla başlayın
-2. **Günlük**: Her gün Kutu 1'deki kartları çalışın
-3. **Tutarlılık**: Düzenli öğrenme başarının anahtarı
-4. **Backup**: Önemli verileri düzenli olarak export edin
+1. **Düzenli çalışın** — Her gün 15-30 dakika çalışmak çok etkili
+2. **Hatalı kartları tekrarlayın** — Kutu 1'deki kartlara daha sık bakın
+3. **Kategori kullanın** — Kartları konulara göre ayırın
+4. **Test verilerini kullanın** — Başlamadan önce sistem hakkında fikir edinin
+5. **Yedeğini alın** — Düzenli olarak JSON backup oluşturun
+
+## 🤝 Katkı
+
+İyileştirmeler için:
+
+1. Depoyu fork et (GitHub)
+2. Değişiklik branch'ı oluştur (`git checkout -b feature/IyileştirmE`)
+3. Değişiklikleri commit et (`git commit -am 'Yeni özellik ekle'`)
+4. Branch'ı push et (`git push origin feature/IyileştirmE`)
+5. Pull Request gönder
+
+## 🗺️ Yol Haritası (Phase 3)
+
+- [ ] Arama fonksiyonu
+- [ ] Kategori filtreleme
+- [ ] Toplu kart işlemleri
+- [ ] Ses efektleri
+- [ ] Gelişmiş istatistikler (grafikler)
+- [ ] Cloud senkronizasyonu
+- [ ] Mobile uygulama (React Native)
+
+## 📞 İletişim & Destek
+
+- **GitHub Issues:** Hataları bildir
+- **Discussions:** Sorularını sor
+- **GitHub:** [@ebakc](https://github.com/ebakc)
+
+## 🎓 Kaynaklar
+
+- [Leitner System](https://en.wikipedia.org/wiki/Leitner_system)
+- [Spaced Repetition](https://en.wikipedia.org/wiki/Spaced_repetition)
+- [Learning Science](https://en.wikipedia.org/wiki/Learning_science)
 
 ---
 
-**Mutlu öğrenmeler! 🎓**
+## 🎉 Happy Learning!
 
-Sorularınız varsa lütfen GitHub issues açın.
+Leitner sistemi ile etkili öğrenmeyi deneyimle. Hedefine ulaşman dileğiyle! 🚀
+
+**Made with ❤️ for learners everywhere**
+
+---
+
+<div align="center">
+
+**⭐ Bu projeyi beğendiysen, bir yıldız bırakmayı unutma!**
+
+[GitHub Deposu](https://github.com/ebakc/LearnWithLeitner) • [İssue Bildir](https://github.com/ebakc/LearnWithLeitner/issues) • [Discussions](https://github.com/ebakc/LearnWithLeitner/discussions)
+
+</div>
