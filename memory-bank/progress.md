@@ -42,6 +42,7 @@
 - "Kartlar" butonu ile deckpage.html'ye gidilir
 - Yeni deste oluşturma formu
 - JSON export/import butonları
+- ✨ **Modal panel onay sistemi**: Desto silme işlemi browser confirm() yerine styled modal panel kullanıyor
 
 ✅ **Deste Yönetimi (deckpage.html)**
 
@@ -50,6 +51,7 @@
 - Kartı sil
 - Destoyu sil (tüm kartlarla)
 - Kategori desteği
+- ✨ **Modal panel onay sistemi**: Kart ve desto silme işlemleri browser confirm() yerine styled modal panel kullanıyor
 
 ✅ **Çalışma Sayfası (workpage.html)**
 
@@ -75,9 +77,10 @@
   - Çözüm: Yeni kartlar HEMEN gösterilir
 
 - ✅ **FIXED**: Çalışma tamamlandıktan sonra otomatik çıkmıyordu
-  - Sebep: renderCard() tüm kartlar bitince showStudyComplete() çağırıyordu ama UI yenilenince kapatılmıyordu
-  - Çözüm: renderCard() içindeki tamamlama sayfası gösteriliyor (300ms delay ile smooth)
-  - Not: Keyboard shortcut (1, 2) çalışıyor, buton tıklaması da çalışıyor
+  - V1 Hatası: renderCard() içinde `this.currentCards.length === 0` kontrolü asla true olamıyordu
+  - Sebep: handleCardResponse() içinde currentCardIndex artırılıp hemen renderCard() çağrılıyor, ama currentCards array hiç boşalmıyor
+  - V2 Çözümü: handleCardResponse() içinde `this.currentCardIndex >= this.currentCards.length` karşılaştırması yapılıyor
+  - Sonuç: Son karttan sonra hemen showStudyComplete() çağrılıyor
 
 ## Testing Done
 

@@ -83,6 +83,22 @@
 </div>
 </main>
 
+<!-- Confirmation Modal -->
+<div id="confirmation-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/50 backdrop-blur-sm">
+  <div class="bg-card-dark rounded-xl border border-border-dark shadow-2xl shadow-black/50 w-96 max-w-[90%] p-6 animate-in">
+    <h2 id="modal-title" class="text-xl font-bold text-slate-100 mb-2">Onay Gerekli</h2>
+    <p id="modal-message" class="text-slate-400 text-sm mb-6"></p>
+    <div class="flex gap-3">
+      <button id="modal-cancel" class="flex-1 px-4 py-2.5 rounded-lg bg-slate-700 text-slate-100 font-semibold hover:bg-slate-600 transition-colors text-sm">
+        İptal
+      </button>
+      <button id="modal-confirm" class="flex-1 px-4 py-2.5 rounded-lg bg-red-600 text-white font-semibold hover:bg-red-700 transition-colors text-sm">
+        Sil
+      </button>
+    </div>
+  </div>
+</div>
+
 </body>
 <script src="js/storage.js"></script>
 <script src="js/utils.js"></script>

@@ -4,8 +4,8 @@
 
 - ✅ Bug fix: Yeni kartlar çalışılmıyordu - FIXED
 - ✅ UI güncellemesi: Header tasarım - DONE
-- ✅ Auto redirect: Tüm kartlar bitince otomatik çıkış - DONE
-- Keyboard shortcuts dokümantasyonu eklendi
+- ✅ Auto redirect: DÜZELTME YAPILDI - Kontrol handleCardResponse içine taşındı
+- 🔧 Modal Panel Onay: Desto/Kart silme işlemleri confirm() yerine modal panel kullanıyor
 
 ## Active Work Items
 
@@ -18,7 +18,17 @@
 - [x] JSON export/import
 - [x] Bug fix: Yeni kartlar gösterimi
 - [x] Header tasarımı güncellemesi
-- [x] Auto redirect tamamlama sayfasına
+- [x] Auto redirect tamamlama sayfasına (v2 - proper check in handleCardResponse)
+- [x] Modal panel onay sistemi (index.html ve deckpage.html)
+
+## Current Changes
+
+**Modal Panel Onay Sistemi**
+
+- index.html: Confirmation modal template eklendi
+- app.js: deleteDeck() modal kullanıyor, showConfirmationModal() ve hideConfirmationModal() metotları eklendi
+- deckpage.html: Confirmation modal template eklendi
+- deckpage.js: deleteCard() ve deleteDeck() modal kullanıyor, showConfirmationModal() ve hideConfirmationModal() metotları eklendi
 
 ## Important Patterns
 
@@ -27,6 +37,7 @@
 - **Schedule Days**: [1, 2, 4, 7, 30]
 - **Box Progression**: Right → +1, Wrong → -1 (min: box=1)
 - **Shuffle**: Fisher-Yates algorithm
+- **Modal Pattern**: Fixed overlay with backdrop-blur, centered w-96 max-w-[90%] panel
 
 ## Recent Decisions
 
@@ -35,6 +46,7 @@
 - JSON export/import tamamlandı ✅
 - İstatistik MVP'de değil (sonra yapılabilir)
 - deckpage.html ile kart yönetimi ✅
+- Modal panel onay sistemi (browser confirm() yerine) ✅
 
 ## Known Constraints
 

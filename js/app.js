@@ -170,13 +170,65 @@ class LeitnerApp {
   }
 
   /**
-   * Destoyu sil
+   * Desteyi sil (Modal ile onay sor)
    */
   deleteDeck(deckId) {
-    if (confirm('Bu destoyu silmek istediğinizden emin misiniz?')) {
-      Storage.deleteDeck(deckId);
-      this.renderDecks();
-      Utils.showToast('Deste silindi', 'success');
+    const deck = Storage.getDecks().find(d => d.id === deckId);
+    if (!deck) return;
+
+    this.showConfirmationModal(
+      `"${this.escapeHtml(deck.name)}" Destesini Sil`,
+      `Bu desteyi ve içindeki tüm kartları silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.`,
+      () => {
+        Storage.deleteDeck(deckId);
+        this.renderDecks();
+        Utils.showToast('Deste silindi...', 'success');
+      }
+    );
+  }
+
+  /**
+   * Onay modalını göster
+   */
+  showConfirmationModal(title, message, onConfirm) {
+    const modal = document.getElementById('confirmation-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalMessage = document.getElementById('modal-message');
+    const confirmBtn = document.getElementById('modal-confirm');
+    const cancelBtn = document.getElementById('modal-cancel');
+
+    if (!modal) return;
+
+    modalTitle.textContent = title;
+    modalMessage.textContent = message;
+
+    // Event listenerları temizle
+    const newConfirmBtn = confirmBtn.cloneNode(true);
+    const newCancelBtn = cancelBtn.cloneNode(true);
+    confirmBtn.replaceWith(newConfirmBtn);
+    cancelBtn.replaceWith(newCancelBtn);
+
+    // Yeni event listenerları ekle
+    newConfirmBtn.addEventListener('click', () => {
+      onConfirm();
+      this.hideConfirmationModal();
+    });
+
+    newCancelBtn.addEventListener('click', () => {
+      this.hideConfirmationModal();
+    });
+
+    // Modalı göster
+    modal.classList.remove('hidden');
+  }
+
+  /**
+   * Onay modalını gizle
+   */
+  hideConfirmationModal() {
+    const modal = document.getElementById('confirmation-modal');
+    if (modal) {
+      modal.classList.add('hidden');
     }
   }
 
@@ -273,11 +325,6 @@ class LeitnerApp {
    * Kartı render et
    */
   renderCard() {
-    if (this.currentCards.length === 0) {
-      this.showStudyComplete();
-      return;
-    }
-
     const card = this.currentCards[this.currentCardIndex];
     const progress = this.currentCardIndex + 1;
     const total = this.currentCards.length;
@@ -390,10 +437,16 @@ class LeitnerApp {
     // Sonraki karta geç
     this.currentCardIndex += 1;
     
-    // Bir küçük delay ekle (UX için) sonra render et
-    setTimeout(() => {
-      this.renderCard();
-    }, 300);
+    // Kontrol: Tüm kartlar bitti mi?
+    if (this.currentCardIndex >= this.currentCards.length) {
+      // Tamamlama ekranını göster
+      this.showStudyComplete();
+    } else {
+      // Bir küçük delay ekle (UX için) sonra render et
+      setTimeout(() => {
+        this.renderCard();
+      }, 300);
+    }
   }
 
   /**

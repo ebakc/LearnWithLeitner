@@ -150,26 +150,87 @@ class DeckPage {
   }
 
   /**
-   * Kartı sil
+   * Kartı sil (Modal ile onay sor)
    */
   deleteCard(cardId) {
-    if (confirm('Bu kartı silmek istediğinizden emin misiniz?')) {
-      Storage.deleteCard(cardId);
-      this.renderCards();
-      Utils.showToast('Kart silindi', 'success');
-    }
+    const cards = Storage.getCardsByDeck(this.deckId);
+    const card = cards.find(c => c.id === cardId);
+    if (!card) return;
+
+    this.showConfirmationModal(
+      'Kartı Sil',
+      `"${this.escapeHtml(card.question)}" kartını silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.`,
+      () => {
+        Storage.deleteCard(cardId);
+        this.renderCards();
+        Utils.showToast('Kart silindi', 'success');
+      }
+    );
   }
 
   /**
-   * Destoyu sil
+   * Destoyu sil (Modal ile onay sor)
    */
   deleteDeck() {
-    if (confirm('Bu destoyu ve TÜM kartlarını silmek istediğinizden emin misiniz?')) {
-      Storage.deleteDeck(this.deckId);
-      Utils.showToast('Deste silindi', 'success');
-      setTimeout(() => {
+    const decks = Storage.getDecks();
+    const deck = decks.find(d => d.id === this.deckId);
+    if (!deck) return;
+
+    const cardCount = Storage.getCardsByDeck(this.deckId).length;
+
+    this.showConfirmationModal(
+      `"${this.escapeHtml(deck.name)}" Destesi Sil`,
+      `Bu destoyu ve içindeki ${cardCount} kartı silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.`,
+      () => {
+        Storage.deleteDeck(this.deckId);
+        Utils.showToast('Deste silindi', 'success');
         window.location.href = 'index.html';
-      }, 1500);
+      }
+    );
+  }
+
+  /**
+   * Onay modalını göster
+   */
+  showConfirmationModal(title, message, onConfirm) {
+    const modal = document.getElementById('confirmation-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalMessage = document.getElementById('modal-message');
+    const confirmBtn = document.getElementById('modal-confirm');
+    const cancelBtn = document.getElementById('modal-cancel');
+
+    if (!modal) return;
+
+    modalTitle.textContent = title;
+    modalMessage.textContent = message;
+
+    // Event listenerları temizle
+    const newConfirmBtn = confirmBtn.cloneNode(true);
+    const newCancelBtn = cancelBtn.cloneNode(true);
+    confirmBtn.replaceWith(newConfirmBtn);
+    cancelBtn.replaceWith(newCancelBtn);
+
+    // Yeni event listenerları ekle
+    newConfirmBtn.addEventListener('click', () => {
+      onConfirm();
+      this.hideConfirmationModal();
+    });
+
+    newCancelBtn.addEventListener('click', () => {
+      this.hideConfirmationModal();
+    });
+
+    // Modalı göster
+    modal.classList.remove('hidden');
+  }
+
+  /**
+   * Onay modalını gizle
+   */
+  hideConfirmationModal() {
+    const modal = document.getElementById('confirmation-modal');
+    if (modal) {
+      modal.classList.add('hidden');
     }
   }
 
