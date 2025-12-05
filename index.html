@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html class="dark" lang="tr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Learn with Leitner - Akıllı Öğrenme Sistemi</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideOut {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+</style>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#38bdf8","background-light": "#f6f7f8",
+                        "background-dark": "#111827","card-dark": "#1f2937","border-dark": "#374151"},
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="font-display bg-background-dark text-slate-100">
+<div class="relative flex h-auto min-h-screen w-full flex-col">
+<header class="sticky top-0 z-20 flex items-center justify-between whitespace-nowrap border-b border-border-dark bg-background-dark/80 backdrop-blur-sm px-6 lg:px-10 py-3">
+<div class="flex items-center gap-4 text-primary">
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em] text-slate-50">
+Learn with Leitner by <a href="https://github.com/ebakc" target="_blank" class="text-primary hover:underline">ebakc</a>
+</h2>
+</div>
+</header>
+<div class="flex flex-1">
+<main class="flex-1 p-6 lg:p-10">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-wrap justify-between items-center gap-4 mb-8">
+<div>
+<h1 class="text-slate-50 text-4xl font-black leading-tight tracking-[-0.033em]">Hoşgeldiniz!</h1>
+<p class="text-slate-400 text-sm mt-2">Leitner Sistemi ile belirli aralıklarla bilgilerinizi tekrar ederek öğrenin!</p>
+</div>
+<div class="flex gap-2">
+<button id="export-data-btn" class="flex min-w-[84px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-12 px-6 bg-slate-700 text-slate-100 text-sm font-bold hover:bg-slate-600 transition-colors">
+<span class="material-symbols-outlined">download</span>
+<span class="truncate hidden sm:inline">İndir</span>
+</button>
+<button id="import-data-btn" class="flex min-w-[84px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-12 px-6 bg-slate-700 text-slate-100 text-sm font-bold hover:bg-slate-600 transition-colors">
+<span class="material-symbols-outlined">upload</span>
+<span class="truncate hidden sm:inline">Yükle</span>
+</button>
+<input type="file" id="import-file-input" accept=".json" style="display: none;"/>
+</div>
+</div>
+
+<div class="flex gap-4 mb-8 bg-card-dark p-4 rounded-xl border border-border-dark">
+<div class="flex-1">
+<input type="text" id="deck-name-input" placeholder="Deste adı (örn: Almanca, İngilizce...)" class="w-full h-12 px-4 bg-slate-700 border border-border-dark focus:border-primary focus:outline-none rounded-lg text-slate-100 placeholder:text-slate-400 text-sm" />
+</div>
+<button id="create-deck-btn" class="flex min-w-[120px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-12 px-6 bg-primary text-slate-900 text-sm font-bold hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="truncate">Yeni Deste</span>
+</button>
+</div>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="decks-container">
+</div>
+</div>
+</main>
+<aside class="w-80 border-l border-border-dark p-6 hidden xl:block sticky top-[65px] h-[calc(100vh-65px)] overflow-y-auto bg-background-dark">
+<div class="flex flex-col gap-6">
+<div>
+<h1 class="text-slate-50 text-lg font-semibold leading-normal">Leitner sistemi nedir?</h1>
+<p class="text-slate-400 text-sm font-normal leading-normal">Leitner sistemi, öğrenilen bilgilerin unutulmasını geciktirmek için ‘aralıklı tekrar’ prensibini kullanan bilimsel bir çalışma yöntemidir. Beynin bilgiyi uzun süreli 
+    hafızaya kaydetme biçiminden yararlanarak, doğru cevaplanan kartları daha seyrek; zorlanılan kartları ise daha sık aralıklarla tekrar ettirir. Bu sayede gereksiz zaman kaybını önler, öğrenme verimliliğini artırır ve bilgilerin aylar 
+    sonra bile hatırlanmasını sağlar. Sistem, hafıza araştırmalarında kanıtlanmış olan ‘unutma eğrisi’ ve ‘tekrarlama etkisi’ üzerine kuruludur ve düzenli kullanıldığında güçlü bir kalıcı öğrenme deneyimi sunar.</p>
+</div>
+<div class="flex flex-col gap-3 text-sm text-slate-300">
+<div>
+<p class="font-semibold text-slate-100 mb-1">📦 Kutu 1: Her Gün Tekrar Edilir</p>
+<p class="text-xs text-slate-400">İlk kez öğrenilen kartlar</p>
+</div>
+<div>
+<p class="font-semibold text-slate-100 mb-1">📦 Kutu 2: 2 Günde Bir Tekrar Edilir</p>
+<p class="text-xs text-slate-400">Evet,evet! Bu buydu dediğiniz kartlar</p>
+</div>
+<div>
+<p class="font-semibold text-slate-100 mb-1">📦 Kutu 3: 4 Günde Bir Tekrar Edilir</p>
+<p class="text-xs text-slate-400">Artık aklınıza kazınmaya başlayan kartlar</p>
+</div>
+<div>
+<p class="font-semibold text-slate-100 mb-1">📦 Kutu 4: 7 Günde Bir Tekrar Edilir</p>
+<p class="text-xs text-slate-400">Kolayca hatırlayabileceğiniz kartlar</p>
+</div>
+<div>
+<p class="font-semibold text-slate-100 mb-1">📦 Kutu 5: 30 Günde Bir Tekrar Edilir</p>
+<p class="text-xs text-slate-400">Adınız gibi bildiğiniz kartlar</p>
+</div>
+</div>
+<div class="pt-4 border-t border-border-dark">
+<p class="text-xs text-slate-400">Tekrar tarihi otomatik hesaplanır. "Bunu Bildim" dediğinizde kartlar ileri kutuya, "Bilemedim" dediğinizde önceki kutuya geri gider.</p>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</div>
+
+</body>
+<script src="js/storage.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/test-data.js"></script>
+<script src="js/app.js"></script>
+</html>
